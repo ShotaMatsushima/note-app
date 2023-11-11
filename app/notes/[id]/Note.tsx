@@ -1,12 +1,18 @@
 import React from "react";
+import { Note } from "../types";
+import parser from "html-react-parser";
 
-const Note = () => {
+type NoteProps = {
+  note: Note;
+};
+
+const Note = ({ note }: NoteProps) => {
   return (
     <div className="flex flex-col bg-gray-100 rounded-lg p-5 gap-2.5">
       <h3 className="text-pink-500 text-lg md:test-xl font-semibold">
-        詳細内容投稿です。。
+        {note.title}
       </h3>
-      <span>はずめての内容です。</span>
+      {parser(note.content)}
     </div>
   );
 };

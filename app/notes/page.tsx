@@ -34,7 +34,7 @@ const NoteItem = ({ note }: NoteProps) => {
           </svg>
         </span>
       </Link>
-      <Link href={`/notes/1`}>
+      <Link href={`/notes/${note.id}`}>
         <h3 className="text-purple-500 hover:text-purple-700 text-lg md:text-xl font-semibold mb-3 underline">
           {note.title}
         </h3>
