@@ -1,17 +1,24 @@
+import { getNoteLists } from "@/lib/clients";
 import Link from "next/link";
+import { Note } from "./types";
 
-export default function Page() {
+type NoteProps = {
+  note: Note;
+};
+
+export default async function Page() {
+  const noteLists = await getNoteLists();
+
   return (
     <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8 sm:gay-y-10 m">
-      <NoteItem />
-      <NoteItem />
-      <NoteItem />
-      <NoteItem />
+      {noteLists.contents.map((note) => (
+        <NoteItem key={note.id} note={note} />
+      ))}
     </div>
   );
 }
 
-const NoteItem = () => {
+const NoteItem = ({ note }: NoteProps) => {
   return (
     <div className="bg-gray-100 rounded-lg p-5 mt-5 relative">
       <Link href={`/notes/1`} className="absolute -top-4 left-4">
@@ -28,9 +35,9 @@ const NoteItem = () => {
       </Link>
       <Link href={`/notes/1`}>
         <h3 className="text-purple-500 hover:text-purple-700 text-lg md:text-xl font-semibold mb-3 underline">
-          初めてのノート
+          {note.title}
         </h3>
-        はじめての投稿です。ここに詳細内容が入ります。
+        {note.content}
       </Link>
     </div>
   );
