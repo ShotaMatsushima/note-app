@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import { Noto_Sans_JP } from "next/font/google";
+
+const NotoSansJP = Noto_Sans_JP({
+  weight: ["400", "700"],
+  preload: true,
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Notes App",
@@ -14,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={`bg-slate-200`}>
+      <body className={`bg-slate-200 ${NotoSansJP.className}`}>
         <main className="pd-4 px-10">
           <div className="flex justify-between items-center">
             <Link href="/" className="font-medium text-2xl">
