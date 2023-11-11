@@ -22,7 +22,7 @@ export default async function Page() {
 const NoteItem = ({ note }: NoteProps) => {
   return (
     <div className="bg-gray-100 rounded-lg p-5 mt-5 relative">
-      <Link href={`/notes/1`} className="absolute -top-4 left-4">
+      <Link href={`/notes/${note.id}`} className="absolute -top-4 left-4">
         <span className="w-8 h-8 inline-flex justify-center items-center bg-purple-500 hover:bg-purple-700 text-white rounded-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
