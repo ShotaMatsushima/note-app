@@ -1,6 +1,7 @@
 import { getNoteLists } from "@/lib/clients";
 import Link from "next/link";
 import { Note } from "./types";
+import parse from "html-react-parser";
 
 type NoteProps = {
   note: Note;
@@ -37,7 +38,7 @@ const NoteItem = ({ note }: NoteProps) => {
         <h3 className="text-purple-500 hover:text-purple-700 text-lg md:text-xl font-semibold mb-3 underline">
           {note.title}
         </h3>
-        {note.content}
+        {parse(note.content)}
       </Link>
     </div>
   );
