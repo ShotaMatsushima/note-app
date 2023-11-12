@@ -1,6 +1,14 @@
 import Link from "next/link";
 import Note from "./Note";
-import { getDetailNote } from "@/lib/clients";
+import { getDetailNote, getNoteLists } from "@/lib/clients";
+
+export async function generateStaticParams() {
+  const { contents } = await getNoteLists();
+
+  return contents.map((note) => ({
+    id: note.id,
+  }));
+}
 
 export default async function Page({ params }: { params: { id: string } }) {
   const note = await getDetailNote(params.id);
