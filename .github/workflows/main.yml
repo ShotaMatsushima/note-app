@@ -25,6 +25,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          SERVICE_DOMAIN: ${{ secrets.SERVICE_DOMAIN }}
+          API_KEY: ${{ secrets.API_KEY }}
       - name: Debug
         run: |
           echo "Bucket: ${{ secrets.AWS_S3_BUCKET }}"
